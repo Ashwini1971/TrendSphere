@@ -126,9 +126,9 @@ def duplicate_data(file_1, file_2, output_file):
 
 
 
-file_1 = 'stu1.csv'
-file_2 = 'stu2.csv'
-output_file = 'non-dul1.csv'
+file_1 = 'csvfiles/stu1.csv'
+file_2 = 'csvfiles/stu2.csv'
+output_file = 'csvfiles/non-dul1.csv'
 print(duplicate_data(file_1, file_2, output_file))
 
 
