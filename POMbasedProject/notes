@@ -1,0 +1,128 @@
+----------POM----------------
+-advantage
+
+1. important of pom is we can reduce the re writing the code
+2. basically to separate TC and Web-element
+3. making reusability
+
+test method    web elements
+tc1  ---------> p1
+            ->  p1
+        -
+    -
+tc2 ----------> p2
+                ^
+                |
+    -------------
+tc3
+    ----------> p3
+--disadvantage of not using POM
+- pages are dependent each other so TC should be re-written
+- if modifying in one page we should modify all the TC which is
+   dependent
+- To avoid that we use POM (page object model) writing each page
+    as separate class in TC
+
+
+----structure----
+
+POM based Project
+     drivers
+       |
+      POM
+       |
+     TestCases
+       |
+     Reports
+
+
+Test Case: project
+
+1) Lunch URL
+2) open url : https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F
+3) provide user name : admin@yourstore.com
+4) provide password : admin
+5) click on login
+6) expected title: Dashboard
+
+
+1. POM
+All the web pages will be included in POM
+
+2. testcase / conf
+where we write selenium driver
+     1. driver   ---> setup
+     2. yield driver
+     3. close    ---> teardown
+3. screen-shot
+To screen-shot the asserted pages
+
+4. report
+To generator test reports
+
+5. lib
+ To store generic functions
+
+6. utility files
+ configration folder --> confif.ini
+            1. it includes base_url, username, password (in text format)
+            2. create a utility folder / read properties file
+            3. import configparser
+               config = configparser.RawConfigParser()
+               config.read(path)
+7. logs
+1. create a log package / project_name.log
+2. create a file inside utilities / custom_logger
+
+
+------------command line argument-----------
+-To execute different browser by reusing same test cases
+- syn :   pytest -vs filename --browser browser-name
+
+-------parallel test-case using pytest-xdist----------
+- running tests parallel can significantly speed up the execution of test suites
+- syn :  pytest -vs filename -n (3)
+- 3 --> no of workers
+- testcases must be independent of each other
+- this is called pytest-xdist
+
+
+----generating reports---------
+- syn :  pytest -vs --html filename.html
+
+-> how to customize the report  --> hook
+1. we make use of hook to generator customized reports
+
+--------------data driven testing----------
+
+--> first create a excel with .xlsx (extension)
+--> then create excel_utils file
+--> openpylx --> supports .xlsx(extension)
+
+-------------mark---------------
+--> basically used to call testing types (sanity or regression)
+*command line arguments
+
+--> pytest -vs -m 'sanity' --html .\reports\report1.html --browser firefox
+--> pytest -vs -m 'regression' --html .\reports\report1.html --browser firefox
+--> pytest -vs -m 'sanity or regression' --html .\reports\report1.html --browser firefox
+--> pytest -vs -m 'sanity and regression' --html .\reports\report1.html --browser firefox
+
+----- batch file------------
+
+1. create a file run.bat
+2. enter below code
+
+@echo off
+call venv\scripts\activate
+pytest -sv "sanity" --html .\reports\test_report.html --browser firefox
+pause
+
+3. double click to open the terminal
+
+
+
+
+
+
+

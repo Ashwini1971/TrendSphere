@@ -1,0 +1,41 @@
+Advantage of using test Automation framework
+
+1. Reusability
+2. Enhancing Reporting
+3. parallel Execution
+4. cross-browser testing
+5. Modularity
+6. Scalability
+7. Maintenance
+--- built-in frameworks
+1. pytest
+2. Unittest
+3. robot framework
+
+--custom framework
+1. data driven framework
+2. Keyword driven
+3. hybrid framework (we use)
+
+-----design----
+name of project
+       |
+       POM(packages)
+       |
+       test_cases(packages)
+       |
+       utilities(packages)
+       |
+       test_data(folder)
+       |
+       logs(folder)
+       |
+       configurations
+       |
+       screenshots(folder)
+       |
+       reports(folder)
+       |
+       run.bat
+
+
